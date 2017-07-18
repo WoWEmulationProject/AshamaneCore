@@ -148,10 +148,15 @@ struct AreaTableEntry
         return (Flags[0] & AREA_FLAG_SANCTUARY) != 0;
     }
 
-    // Checks if zone activates pvp talents.
-    bool ActivatesPvpTalents() const
+    bool IsFlyable() const
     {
-        return (!IsSanctuary() && (Flags[0] & (AREA_FLAG_ARENA | AREA_FLAG_WINTERGRASP)) != 0) || ID == 5095 /*Tol Barad*/;
+        if (Flags[0] & AREA_FLAG_OUTLAND)
+        {
+            if (!(Flags[0] & AREA_FLAG_NO_FLY_ZONE))
+                return true;
+        }
+
+        return false;
     }
 };
 
