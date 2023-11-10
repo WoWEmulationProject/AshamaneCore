@@ -1,5 +1,6 @@
 /*
-* Copyright (C) 2017-2019 AshamaneProject <https://github.com/AshamaneProject>
+* Copyright (C) 2017-2023 AshamaneProject <https://github.com/AshamaneProject>
+* Copyright (C) 2023-2023 WoW Emulation Project <https://github.com/WoWEmulationProject/>
 *
 * This program is free software; you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the
@@ -33,7 +34,7 @@
 #include "TemporarySummon.h"
 #include "WodGarrison.h"
 
-enum
+enum Quests
 {
     QUEST_FINDING_A_FOOTHOLD                = 34582,
     QUEST_FOR_THE_ALLIANCE                  = 34583,
@@ -41,17 +42,22 @@ enum
     QUEST_ESTABLISH_YOUR_GARRISON           = 34586,
 };
 
-enum
+enum Creatures
 {
     NPC_VELEN_FOLLOWER_MARAAD               = 79218,
     NPC_VELEN_FOLLOWER_YREL                 = 79219,
+
+	NPC_ARCHMAGE_KHADGAR_SUMMON             = 79657,
+	NPC_YREL_SUMMON                         = 79656,
+	NPC_PROPHET_VELEN_SUMMON                = 79635,
+	NPC_VINDICATOR_MARAAD_SUMMON            = 79655,
 
     NPC_FINDING_A_FOOTHOLD_KILL_CREDIT      = 79697,
     NPC_FOR_THE_ALLIANCE_PORTAL_KILL_CREDIT = 79433,
     NPC_ESTABLISH_YOUR_GARRISON_KILL_CREDIT = 79757,
 };
 
-// 79206 - Prophète Velen - Shadowmoon start
+// 79206 - ProphÃ¨te Velen - Shadowmoon start
 class npc_velen_shadowmoon_begin : public CreatureScript
 {
 public:
@@ -120,7 +126,7 @@ public:
     };
 };
 
-// 79206 - Prophète Velen - Shadowmoon start
+// 79206 - ProphÃ¨te Velen - Shadowmoon start
 class npc_velen_shadowmoon_follower : public CreatureScript
 {
 public:
@@ -383,7 +389,7 @@ struct areatrigger_aqualir_submerge : AreaTriggerAI
     }
 };
 
-//## Gara - suite de quêtes cachées chasseur
+//## Gara - suite de quÃªtes cachÃ©es chasseur
 
 enum GaraQuestLineEnum
 {
@@ -783,7 +789,7 @@ Position VoidRealmEventPos[] =
 #define SAY_OMRA_11 "She is being swallowed by the void! You must help her! There is only one way, tame her, now! Maybe you can find a way to reverse the process, and put her soul at rest, as you have done mine !"
 #define SAY_OMRA_12 "You've done it... thank you. Goodbye, Gara, my soul is at peace now. I hope... that you find this peace some day, too. I am so sorry, my dearest Gara."
 
-// 88707 - Gara invoquée dans le vide
+// 88707 - Gara invoquÃ©e dans le vide
 class npc_void_gara : public CreatureScript
 {
 public:
